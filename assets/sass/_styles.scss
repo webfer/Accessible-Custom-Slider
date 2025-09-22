@@ -1,0 +1,46 @@
+// Accessible Custom Slider Styles
+
+.splide {
+  margin: 2rem auto;
+  max-width: 100%;
+  position: relative;
+
+  .splide__track {
+    overflow: hidden;
+    border-radius: 0.5rem;
+  }
+
+  .splide__slide {
+    outline: none;
+
+    img {
+      width: 100%;
+      border-radius: 0.375rem;
+      object-fit: cover;
+    }
+  }
+
+  .splide__pagination {
+    li {
+      margin: 0 0.25rem;
+    }
+  }
+
+  .splide__arrow {
+    background-color: rgba(var(--shades100), 1);
+    color: rgba(var(--shades0), 1);
+    padding: 0.5rem;
+    border-radius: 999px;
+    transition: background-color 0.3s ease;
+
+    &:hover {
+      background-color: rgba(var(--grays-900), 1);
+    }
+
+    svg {
+      fill: currentColor;
+      width: 1rem;
+      height: 1rem;
+    }
+  }
+}

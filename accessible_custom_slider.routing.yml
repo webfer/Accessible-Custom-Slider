@@ -1,0 +1,7 @@
+accessible_custom_slider.settings:
+  path: '/admin/config/user-interface/accessible-slider'
+  defaults:
+    _form: '\Drupal\accessible_custom_slider\Form\AccessibleCustomSliderSettingsForm'
+    _title: 'Accessible Slider Settings'
+  requirements:
+    _permission: 'administer site configuration'

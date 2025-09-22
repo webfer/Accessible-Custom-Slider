@@ -1,0 +1,6 @@
+accessible_custom_slider.settings:
+  title: 'Accessible Slider Settings'
+  description: 'Configure the accessible Splide.js slider View integration.'
+  route_name: accessible_custom_slider.settings
+  parent: system.admin_config
+  weight: 100

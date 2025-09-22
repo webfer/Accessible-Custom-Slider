@@ -1,0 +1,95 @@
+<?php
+
+/**
+ * Implements hook_preprocess_HOOK() for views_view.
+ */
+function accessible_custom_slider_preprocess_views_view(array &$variables) {
+  $configs = \Drupal::config('accessible_custom_slider.settings')->get('slider_configurations') ?? [];
+  $view = $variables['view'];
+  $current_lang = \Drupal::languageManager()->getCurrentLanguage()->getId();
+
+  foreach ($configs as $index => $slider) {
+    // Only attach sliders matching this view & display.
+    if ($view->id() === $slider['view_machine_name'] &&
+        $view->current_display === $slider['view_display_id']) {
+
+      // Attach the slider library.
+      $variables['#attached']['library'][] = 'accessible_custom_slider/slider';
+
+      $settings = [];
+
+      // JSON config mode overrides.
+      if (!empty($slider['advanced_settings']['custom_json']) &&
+          ($slider['advanced_settings']['config_mode'] ?? 'basic') === 'json') {
+        $decoded = json_decode($slider['advanced_settings']['custom_json'], TRUE);
+        if (json_last_error() === JSON_ERROR_NONE && is_array($decoded)) {
+          $settings = $decoded;
+        }
+      }
+
+      // Basic config mode fallback.
+      if (empty($settings)) {
+        $settings = [
+          'type' => $slider['advanced_settings']['type'] ?? 'loop',
+          'perPage' => $slider['advanced_settings']['per_page'] ?? 1,
+          'autoplay' => $slider['advanced_settings']['autoplay'] ?? TRUE,
+          'interval' => $slider['advanced_settings']['interval'] ?? 15000,
+          'speed' => $slider['advanced_settings']['speed'] ?? 2500,
+          'arrows' => $slider['advanced_settings']['arrows'] ?? FALSE,
+          'pagination' => $slider['advanced_settings']['pagination'] ?? TRUE,
+          'pauseOnHover' => $slider['advanced_settings']['pause_on_hover'] ?? TRUE,
+          'pauseOnFocus' => $slider['advanced_settings']['pause_on_focus'] ?? TRUE,
+          'keyboard' => $slider['advanced_settings']['keyboard'] ?? TRUE,
+          'rewind' => $slider['advanced_settings']['rewind'] ?? FALSE,
+          'direction' => $slider['advanced_settings']['direction'] ?? 'ltr',
+          'gap' => $slider['advanced_settings']['gap'] ?? '1rem',
+          'breakpoints' => $slider['advanced_settings']['breakpoints'] ?? [],
+        ];
+      }
+
+      $unique_id = 'accessible-custom-slider--' . $index;
+      $selector = $slider['slider_selector'] ?? '';
+
+      // Prepare per-language title: prefer admin_title_per_lang, fallback to admin_title.
+      $adminTitlePerLang = [];
+      $default_title = !empty($slider['admin_title']) ? $slider['admin_title'] : 'Slider';
+      foreach (\Drupal::languageManager()->getLanguages() as $langcode => $language) {
+        if (!empty($slider['admin_title_per_lang'][$langcode])) {
+          $adminTitlePerLang[$langcode] = $slider['admin_title_per_lang'][$langcode];
+        }
+        else {
+          $adminTitlePerLang[$langcode] = $default_title;
+        }
+      }
+
+      // Pick the current language title or fallback.
+      $adminTitle = $adminTitlePerLang[$current_lang] ?? reset($adminTitlePerLang);
+
+      $variables['#attached']['drupalSettings']['accessibleCustomSlider'][$unique_id] = [
+        'adminTitle' => $adminTitle,
+        'adminTitlePerLang' => $adminTitlePerLang,
+        'selector' => $selector,
+        'settings' => $settings,
+        'uniqueId' => $unique_id,
+        'showHeading' => !empty($slider['show_heading']),
+        'i18n' => [
+          'prev' => t('Previous slide'),
+          'next' => t('Next slide'),
+          'first' => t('Go to first slide'),
+          'last' => t('Go to last slide'),
+          'slideX' => t('Go to slide %s'),
+          'pageX' => t('Go to page %s'),
+          'play' => t('Start autoplay'),
+          'pause' => t('Pause autoplay'),
+          'carousel' => t('carousel'),
+          'select' => t('Select a slide to show'),
+          'slide' => t('slide'),
+          'slideLabel' => t('@current of @total', ['@current' => '%s', '@total' => '%s']),
+          'toggleAutoplay' => t('Toggle autoplay'),
+          'toggleMute' => t('Toggle mute'),
+          'toggleCaptions' => t('Toggle captions'),
+        ],
+      ];
+    }
+  }
+}

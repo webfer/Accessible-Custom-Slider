@@ -1,0 +1,6 @@
+slider:
+  version: 1.x
+  js:
+    dist/slider.bundle.js: {}
+  dependencies:
+    - core/drupal

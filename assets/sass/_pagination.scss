@@ -1,0 +1,35 @@
+.splide {
+  .wrp--navigation-slider {
+    margin-top: 2rem;
+    .splide__pagination {
+      position: relative;
+      bottom: 0;
+      li {
+        button {
+          width: 16px;
+          height: 16px;
+          border: none;
+          cursor: pointer;
+          border-radius: 50%;
+          border: 2px solid rgba(var(--theme-primary500-shades100), 1);
+          box-shadow: 0 0 0 0 transparent;
+          vertical-align: middle;
+          background-color: rgba(var(--grays-800), 1);
+          transition: all 0.3s ease;
+          opacity: 1;
+          &.is-active {
+            background-color: rgba(var(--theme-primary500-shades100), 1);
+            border-color: rgba(var(--shades0), 1);
+            box-shadow: 0 0 0 2px rgba(var(--theme-primary500-shades100), 1);
+            opacity: 1;
+            transform: none;
+          }
+          &:hover,
+          &:focus {
+            background-color: rgba(var(--theme-primary500-shades100), 1);
+          }
+        }
+      }
+    }
+  }
+}

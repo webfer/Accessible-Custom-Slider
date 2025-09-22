@@ -1,0 +1,8 @@
+name: 'Accessible Custom Slider'
+type: module
+description: 'Adds an accessible Splide.js slider with Views integration.'
+package: Custom
+version: '1.0.0'
+core_version_requirement: ^10 || ^11
+dependencies:
+  - drupal:views

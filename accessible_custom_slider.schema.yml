@@ -1,0 +1,53 @@
+accessible_custom_slider.settings:
+  type: config_object
+  label: 'Accessible Custom Slider settings'
+  mapping:
+    slider_configurations:
+      type: sequence
+      label: 'Slider Configurations'
+      sequence:
+        type: mapping
+        mapping:
+          # Titles per language
+          admin_title_per_lang:
+            type: mapping
+            label: 'Slider Titles per Language'
+            mapping:
+              en:
+                type: text
+              ca:
+                type: text
+              # Add other languages as needed
+          show_heading:
+            type: boolean
+            label: 'Display heading for accessibility'
+          view_machine_name:
+            type: text
+            label: 'View ID'
+          view_display_id:
+            type: text
+            label: 'Display ID'
+          slider_selector:
+            type: text
+            label: 'Slider selector'
+          advanced_settings:
+            type: mapping
+            label: 'Advanced Settings'
+            mapping:
+              config_mode: text
+              type: text
+              per_page: integer
+              autoplay: boolean
+              interval: integer
+              speed: integer
+              arrows: boolean
+              pagination: boolean
+              pause_on_hover: boolean
+              pause_on_focus: boolean
+              keyboard: boolean
+              rewind: boolean
+              direction: text
+              gap: text
+              breakpoints:
+                type: mapping
+                label: 'Breakpoints'
