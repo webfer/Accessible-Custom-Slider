@@ -10,6 +10,17 @@ Accessible Custom Slider is a Drupal 10 module that integrates [Splide.js](https
 - Frontend and backend assets compiled via Webpack
 - Includes starter Twig template for accessible rendering
 
+## 📁 Project Structure
+
+- `assets/sass/` — SCSS partials for styling the slider
+- `dist/` — Compiled JS bundles (auto-generated, do not edit directly)
+- `src/` — Main JS/SCSS entry points and PHP source code
+  - `src/Form/` — Drupal form classes (e.g., settings forms)
+  - `src/Plugin/views/style/` — Custom Views style plugins
+- `webpack.config.js` — Webpack build configuration
+- `accessible_custom_slider.*.yml` — Drupal module config files
+- `.gitignore` — Excludes node_modules, dist, vendor, IDE, OS, and build artifacts
+
 ## 📦 Installation
 
 ### 1. Clone the Repository
@@ -77,7 +88,6 @@ The module includes a Sass directory located at:
 
 ```bash
 accessible_custom_slider/assets/sass/
-
 ```
 
 ### 🔧 How to Customize
@@ -86,7 +96,6 @@ accessible_custom_slider/assets/sass/
 
 ```bash
 cd accessible_custom_slider/assets/sass/
-
 ```
 
 2. Create your own SCSS partials (e.g., `_my-slider-styles.scss`) and import them in the index.scss file:
@@ -113,8 +122,14 @@ cd accessible_custom_slider/assets/sass/
 npm run build    # For production
 # or
 npm run watch    # For development with live rebuilding
-
 ```
+
+## 🛠 Development & Contribution
+
+- Use `npm run watch` for live asset rebuilding during development.
+- All PHP source code is in `src/`.
+- SCSS partials are in `assets/sass/` and compiled to `dist/`.
+- The `.gitignore` file ensures that build output, dependencies, and IDE/OS files are not committed.
 
 ## 🪄 Tip
 
@@ -131,9 +146,7 @@ Navigate to:
 There, you can add configurations for each carousel instance by specifying:
 
 - View machine name
-
 - Display ID
-
 - CSS selector (default: `.splide`)
 
 To remove a configuration, simply delete the values and click "Save".
@@ -212,7 +225,6 @@ To use the module with Views, override your View template with the following exa
     </div>
   </section>
 {% endif %}
-
 
 ```
 
