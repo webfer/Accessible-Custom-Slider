@@ -39,9 +39,8 @@ import './index.scss';
           sliderElements.forEach((element) => {
             // Run once per element.
             once('accessibleCustomSlider', element).forEach(() => {
-              // Insert heading if enabled
+              // Insert heading if enabled.
               if (sliderConfig.showHeading) {
-                // Pick title for current language or fallback to first available.
                 const adminTitle =
                   sliderConfig.adminTitlePerLang?.[currentLang] ||
                   Object.values(sliderConfig.adminTitlePerLang)[0] ||
@@ -53,7 +52,7 @@ import './index.scss';
                   heading.textContent = adminTitle;
                   heading.classList.add('visually-hidden');
 
-                  // Insert heading before .splide__track
+                  // Insert heading before .splide__track.
                   const track = element.querySelector('.splide__track');
                   if (track && track.parentNode) {
                     track.parentNode.insertBefore(heading, track);
@@ -80,6 +79,52 @@ import './index.scss';
                 const splideInstance = new Splide(element, mergedOptions);
                 splideInstance.mount();
                 element.classList.add('splide-initialized');
+
+                // 🔹 Update the hidden announcement span for perPage.
+                // after splideInstance.mount() && element.classList.add('splide-initialized');
+
+                const announce = element.querySelector(
+                  'span.visually-hidden[aria-live="polite"]'
+                );
+
+                // Grab the slidesInView templates from the server-provided i18n (if present)
+                const slidesInViewI18n =
+                  sliderConfig.i18n && sliderConfig.i18n.slidesInView
+                    ? sliderConfig.i18n.slidesInView
+                    : null;
+
+                const formatSlidesInView = (perPage) => {
+                  // Prefer server-provided templates (already translated on server).
+                  if (slidesInViewI18n) {
+                    if (perPage === 1 && slidesInViewI18n.one) {
+                      return slidesInViewI18n.one;
+                    }
+                    // use 'many' template if present; otherwise fall back to 'one' template and replace
+                    const tpl =
+                      slidesInViewI18n.many ??
+                      slidesInViewI18n.one ??
+                      'This carousel displays @num slides in each view.';
+                    return String(tpl).replace(/@num/g, String(perPage));
+                  }
+
+                  // Final fallback: use Drupal.t in JS (only if server template missing)
+                  return Drupal.t(
+                    'This carousel displays @num slides in each view.',
+                    { '@num': perPage }
+                  );
+                };
+
+                if (announce) {
+                  const updateAnnouncement = () => {
+                    // Splide applies breakpoints and updates options.perPage accordingly.
+                    const perPage = splideInstance.options.perPage || 1;
+                    announce.textContent = formatSlidesInView(perPage);
+                  };
+
+                  // Update once on mount and on subsequent resize (breakpoint changes).
+                  splideInstance.on('mounted resize', updateAnnouncement);
+                  updateAnnouncement();
+                }
               } catch (error) {
                 console.warn(
                   'Failed to initialize Splide on element:',

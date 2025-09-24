@@ -314,43 +314,47 @@ Translation. Find these keys in the Drupal UI and translate it using these value
 
 ### Catalan
 
-| English String         | Catalan Translation                          |
-| ---------------------- | -------------------------------------------- |
-| Previous slide         | Diapositiva anterior                         |
-| Next slide             | Diapositiva següent                          |
-| Go to first slide      | Vés a la primera diapositiva                 |
-| Go to last slide       | Vés a l'última diapositiva                   |
-| Go to slide @num       | Aneu a la diapositiva @num                   |
-| Go to page @num        | Vés a la pàgina @num                         |
-| Start autoplay         | Inicia la reproducció automàtica             |
-| Pause autoplay         | Posa en pausa la reproducció automàtica      |
-| carousel               | carrusel                                     |
-| Select a slide to show | Seleccioneu una diapositiva per mostrar      |
-| slide                  | diapositiva                                  |
-| @current of @total     | @current de @total                           |
-| Toggle autoplay        | Activa o desactiva la reproducció automàtica |
-| Toggle mute            | Activa o desactiva el audio                  |
-| Toggle captions        | Activa o desactiva els subtítols             |
+| English String                                   | Catalan Translation                                     |
+| ------------------------------------------------ | ------------------------------------------------------- |
+| Previous slide                                   | Diapositiva anterior                                    |
+| Next slide                                       | Diapositiva següent                                     |
+| Go to first slide                                | Vés a la primera diapositiva                            |
+| Go to last slide                                 | Vés a l'última diapositiva                              |
+| Go to slide @num                                 | Aneu a la diapositiva @num                              |
+| Go to page @num                                  | Vés a la pàgina @num                                    |
+| Start autoplay                                   | Inicia la reproducció automàtica                        |
+| Pause autoplay                                   | Posa en pausa la reproducció automàtica                 |
+| carousel                                         | carrusel                                                |
+| Select a slide to show                           | Seleccioneu una diapositiva per mostrar                 |
+| slide                                            | diapositiva                                             |
+| @current of @total                               | @current de @total                                      |
+| Toggle autoplay                                  | Activa o desactiva la reproducció automàtica            |
+| Toggle mute                                      | Activa o desactiva el audio                             |
+| Toggle captions                                  | Activa o desactiva els subtítols                        |
+| This carousel displays 1 slide in each view.     | Aquest carrusel mostra 1 diapositiva en cada vista.     |
+| This carousel displays @num slides in each view. | Aquest carrusel mostra @num diapositives en cada vista. |
 
 ### Spanish
 
-| English String         | Spanish Translation                             |
-| ---------------------- | ----------------------------------------------- |
-| Previous slide         | Diapositiva anterior                            |
-| Next slide             | Diapositiva siguiente                           |
-| Go to first slide      | Ir a la primera diapositiva                     |
-| Go to last slide       | Ir a la última diapositiva                      |
-| Go to slide @num       | Ir a la diapositiva @num                        |
-| Go to page @num        | Ir a la página @num                             |
-| Start autoplay         | Iniciar reproducción automática                 |
-| Pause autoplay         | Pausar la reproducción automática               |
-| carousel               | carrusel                                        |
-| Select a slide to show | Seleccione una diapositiva para mostrar         |
-| slide                  | diapositiva                                     |
-| @current of @total     | @current de @total                              |
-| Toggle autoplay        | Activar o desactivar la reproducción automática |
-| Toggle mute            | Activar o desactivar el audio                   |
-| Toggle captions        | Activar o desactivar subtítulos                 |
+| English String                                   | Spanish Translation                                    |
+| ------------------------------------------------ | ------------------------------------------------------ |
+| Previous slide                                   | Diapositiva anterior                                   |
+| Next slide                                       | Diapositiva siguiente                                  |
+| Go to first slide                                | Ir a la primera diapositiva                            |
+| Go to last slide                                 | Ir a la última diapositiva                             |
+| Go to slide @num                                 | Ir a la diapositiva @num                               |
+| Go to page @num                                  | Ir a la página @num                                    |
+| Start autoplay                                   | Iniciar reproducción automática                        |
+| Pause autoplay                                   | Pausar la reproducción automática                      |
+| carousel                                         | carrusel                                               |
+| Select a slide to show                           | Seleccione una diapositiva para mostrar                |
+| slide                                            | diapositiva                                            |
+| @current of @total                               | @current de @total                                     |
+| Toggle autoplay                                  | Activar o desactivar la reproducción automática        |
+| Toggle mute                                      | Activar o desactivar el audio                          |
+| Toggle captions                                  | Activar o desactivar subtítulos                        |
+| This carousel displays 1 slide in each view.     | Este carrusel muestra 1 diapositiva en cada vista.     |
+| This carousel displays @num slides in each view. | Este carrusel muestra @num diapositivas en cada vista. |
 
 ---
 

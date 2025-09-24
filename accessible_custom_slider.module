@@ -88,6 +88,10 @@ function accessible_custom_slider_preprocess_views_view(array &$variables) {
           'toggleAutoplay' => t('Toggle autoplay'),
           'toggleMute' => t('Toggle mute'),
           'toggleCaptions' => t('Toggle captions'),
+          'slidesInView' => [
+          'one'  => t('This carousel displays 1 slide in each view.'),
+          'many' => t('This carousel displays @num slides in each view.', ['@num' => '@num']),
+        ],
         ],
       ];
     }
